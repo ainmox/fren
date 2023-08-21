@@ -1,4 +1,4 @@
-# Friends
+# Fren
 
 Miscellaneous utilities for [friend.tech](friend.tech) smart contracts. All contracts are meant to serve as 
 public goods and are free to use.
