@@ -13,50 +13,50 @@ interface FriendSharesV1 {
     ///
     /// @param subject The subject of the shares
     ///
-    /// @return totalShares The total number of shares that exist for `subject`
+    /// @return totalSupply The total number of shares that exist for `subject`
     function sharesSupply(address subject) external view returns (uint256 totalSupply);
 
-    /// @notice Returns the amount of ether that purchasing `shares` shares of `subject` costs without accounting for fees
+    /// @notice Returns the amount of ether that purchasing `amount` shares of `subject` costs without accounting for fees
     ///
     /// @param subject The subject of the shares
-    /// @param shares  The number of shares
+    /// @param amount  The number of shares
     ///
-    /// @return value The amount of ether that purchasing `shares` shares of `subject` would cost
-    function getBuyPrice(address subject, uint256 shares) external view returns (uint256 value);
+    /// @return value The amount of ether that purchasing `amount` shares of `subject` would cost
+    function getBuyPrice(address subject, uint256 amount) external view returns (uint256 value);
 
-    /// @notice Returns the amount of ether that selling `shares` shares of `subject` returns without accounting for fees
+    /// @notice Returns the amount of ether that selling `amount` shares of `subject` returns without accounting for fees
     ///
     /// @param subject The subject of the shares
-    /// @param shares  The number of shares
+    /// @param amount  The number of shares
     ///
-    /// @return value The amount of ether that selling `shares` shares of `subject` would return
+    /// @return value The amount of ether that selling `amount` shares of `subject` would return
     function getSellPrice(address subject, uint256 amount) external view returns (uint256 value);
 
-    /// @notice Returns the amount of ether that purchasing `shares` shares of `subject` costs after accounting for fees
+    /// @notice Returns the amount of ether that purchasing `amount` shares of `subject` costs after accounting for fees
     ///
     /// @param subject The subject of the shares
-    /// @param shares  The number of shares
+    /// @param amount  The number of shares
     ///
-    /// @return value The amount of ether that purchasing `shares` shares of `subject` would cost
-    function getBuyPriceAfterFee(address subject, uint256 shares) external view returns (uint256 value);
+    /// @return value The amount of ether that purchasing `amount` shares of `subject` would cost
+    function getBuyPriceAfterFee(address subject, uint256 amount) external view returns (uint256 value);
 
-    /// @notice Returns the amount of ether that selling `shares` shares of `subject` returns after accounting for fees
+    /// @notice Returns the amount of ether that selling `amount` shares of `subject` returns after accounting for fees
     ///
     /// @param subject The subject of the shares
-    /// @param shares  The number of shares
+    /// @param amount  The number of shares
     ///
-    /// @return value The amount of ether that selling `shares` shares of `subject` would return
-    function getSellPriceAfterFee(address subject, uint256 shares) external view returns (uint256 value);
+    /// @return value The amount of ether that selling `amount` shares of `subject` would return
+    function getSellPriceAfterFee(address subject, uint256 amount) external view returns (uint256 value);
 
-    /// @notice Buys `shares` shares of `subject`
+    /// @notice Buys `amount` shares of `subject`
     ///
     /// @param subject The subject of the shares
     /// @param amount  The number of shares to buy
-    function buyShares(address subject, uint256 shares) external payable;
+    function buyShares(address subject, uint256 amount) external payable;
 
-    /// @notice Sells `shares` shares of `subject`
+    /// @notice Sells `amount` shares of `subject`
     ///
     /// @param subject The subject of the shares
     /// @param amount  The number of shares to sell
-    function sellShares(address subject, uint256 shares) external payable;
+    function sellShares(address subject, uint256 amount) external payable;
 }

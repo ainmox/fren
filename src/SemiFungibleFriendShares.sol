@@ -22,7 +22,7 @@ contract SemiFungibleFriendShares is ERC1155, Owned {
     string public defaultURI;
 
     /// @notice The metadata URI overrides for the token with id `id`
-    mapping(uint256 id => string uri) public override uriOverrides;
+    mapping(uint256 id => string uri) public uriOverrides;
 
     /// @dev Engages the reentrancy lock
     modifier lock() {
@@ -55,10 +55,8 @@ contract SemiFungibleFriendShares is ERC1155, Owned {
 
     /// @notice Allows `msg.sender` to set their token URI to `value`
     function setURI(string memory value) external {
-        uint256 id = getTokenId(msg.sender);
-        require(!uriLocked[id], "URI_LOCKED");
-
-        uriOverrides[id] = value;
+        uint256 id;
+        uriOverrides[(id = getTokenId(msg.sender))] = value;
 
         emit URI(value, id);
     }
