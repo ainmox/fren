@@ -3,6 +3,10 @@
 Miscellaneous utilities for [friend.tech](friend.tech) smart contracts. All contracts are meant to serve as 
 public goods and are free to use.
 
+## :warning: Warning
+
+None of these smart contracts are audited. Use at your own risk.
+
 ## Contracts 
 
 ### Semi-fungible Wrapper
