@@ -21,8 +21,9 @@ ether is refunded to the sender. To prevent frontrunning when purchasing or rede
 `minimumProceeds` can be specified to revert the call if the amount of ether spent or received is out of an expected 
 range.
 
-The only centralized action that the deployer can make is to set the default URI. Users are 
-able to override the default URI at any time.
+The only centralized action that the deployer can make is to set the default URI. Users are free to override the default
+URI at any time to setup their metadata. Consult the [OpenSea documentation](https://docs.opensea.io/docs/metadata-standards)
+for more information on how to structure the metadata.
 
 *If you wrap shares in this contract, you will not be able to use the subject's chatroom. For this reason it is
 recommended that you only use this contract if you are a power user.*
