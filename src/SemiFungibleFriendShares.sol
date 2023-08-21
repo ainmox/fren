@@ -102,6 +102,8 @@ contract SemiFungibleFriendShares is ERC1155, Owned {
         cost = previewPurchase(subject, amount);
         require(cost <= maximumCost, "EXCESSIVE_COST");
 
+        require(msg.value >= cost, "INSUFFICIENT_VALUE");
+
         shares.buyShares{value: cost}(subject, amount);
 
         _mint(recipient, getTokenId(subject), amount, data);
