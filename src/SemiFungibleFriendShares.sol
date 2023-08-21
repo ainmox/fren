@@ -136,4 +136,9 @@ contract SemiFungibleFriendShares is ERC1155, Owned {
 
         recipient.safeTransferETH(proceeds);
     }
+
+    /// @notice Restrict the ability to receive ether to the `FriendSharesV1` contract
+    receive() external payable {
+        require(msg.sender == address(shares), "UNAUTHORIZED");
+    }
 }
