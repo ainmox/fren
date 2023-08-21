@@ -16,9 +16,10 @@ The wrapped shares can be redeemed at any time. Wrapping the shares in this form
 allows for transfers and integration in other contracts that support the ERC-1155 standard 
 (Blur, OpenSea, Sudoswap).
 
-The wrapper includes slight improvements over the base friend.tech shares contract. When purchasing
-shares, any excess ether is refunded to the sender. To prevent frontrunning when purchasing or redeeming shares, a 
-parameter can be specified to revert the call if the amount of ether spend or received is within an expected range.
+The wrapper includes slight improvements over the base friend.tech shares contract. When purchasing shares, any excess 
+ether is refunded to the sender. To prevent frontrunning when purchasing or redeeming shares, the `maximumCost` and 
+`minimumProceeds` can be specified to revert the call if the amount of ether spent or received is out of an expected 
+range.
 
 The only centralized action that the deployer can make is to set the default URI. Users are 
 able to override the default URI at any time.
