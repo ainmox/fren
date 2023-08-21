@@ -125,7 +125,7 @@ contract SemiFungibleFriendShares is ERC1155, Owned {
         address recipient,
         uint256 minimumProceeds
     ) external lock returns (uint256 proceeds) {
-        require(amount >= 0, "INVALID_AMOUNT");
+        require(amount > 0, "INVALID_AMOUNT");
 
         proceeds = previewRedeem(subject, amount);
         require(proceeds >= minimumProceeds, "INSUFFICIENT_PROCEEDS");
