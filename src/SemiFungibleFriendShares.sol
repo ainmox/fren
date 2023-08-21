@@ -24,16 +24,22 @@ contract SemiFungibleFriendShares is ERC1155, Owned {
     /// @notice The metadata URI overrides for the token with id `id`
     mapping(uint256 id => string uri) public override uriOverrides;
 
-    constructor(FriendSharesV1 shares_) Owned(msg.sender) {
-        shares = shares_;
-    }
-
     /// @dev Engages the reentrancy lock
     modifier lock() {
         require(unlocked, "LOCKED");
         unlocked = false;
         _;
         unlocked = true;
+    }
+
+    constructor(FriendSharesV1 shares_) Owned(msg.sender) {
+        shares = shares_;
+    }
+
+    /// @notice Returns the metadata URI of the token with id `id`
+    function uri(uint256 id) public view override returns (string memory) {
+        string memory overrideURI = uriOverrides[id];
+        return bytes(overrideURI).length > 0 ? uriOverrides[id] : defaultURI;
     }
 
     /// @notice Returns the token id for `subject`
@@ -55,12 +61,6 @@ contract SemiFungibleFriendShares is ERC1155, Owned {
         uriOverrides[id] = value;
 
         emit URI(value, id);
-    }
-
-    /// @notice Returns the metadata URI of the token with id `id`
-    function uri(uint256 id) public view override returns (string memory) {
-        string memory overrideURI = uriOverrides[id];
-        return bytes(overrideURI).length > 0 ? uriOverrides[id] : defaultURI;
     }
 
     /// @notice Returns the amount of ether that purchasing `amount` shares of `subject` would cost
