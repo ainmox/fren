@@ -17,4 +17,6 @@ allows for transfers and integration in other contracts that support the ERC-115
 (Blur, OpenSea, Sudoswap).
 
 The only centralized action that the deployer can make is to set the default URI. Users are 
-able to override the default URI at any time. 
+able to override the default URI at any time.
+
+*If you wrap shares in this contract, you will not be able to use the subject's chatroom.*
